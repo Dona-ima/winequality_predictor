@@ -1,0 +1,18 @@
+# Ignorer les fichiers de Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignorer les fichiers de configuration de l'éditeur
+.vscode/
+.idea/
+
+# Ignorer les fichiers générés
+*.log
+*.csv
+*.joblib
+*.pkl
+
+# Ignorer les fichiers de cache de Jupyter
+.ipynb_checkpoints/
