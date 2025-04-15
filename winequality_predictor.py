@@ -120,17 +120,17 @@ st.write("")
 # --- Feature Input ---
 r = feature_ranges[wine_type]
 
-feature1 = st.number_input("Fixed Acidity", *r["Fixed Acidity"])
-feature2 = st.number_input("Volatile Acidity", *r["Volatile Acidity"])
-feature3 = st.number_input("Citric Acid", *r["Citric Acid"])
-feature4 = st.number_input("Residual Sugar", *r["Residual Sugar"])
-feature5 = st.number_input("Chlorides", *r["Chlorides"])
-feature6 = st.number_input("Free Sulfur Dioxide", *r["Free Sulfur Dioxide"])
-feature7 = st.number_input("Total Sulfur Dioxide", *r["Total Sulfur Dioxide"])
-feature8 = st.number_input("Density", *r["Density"])
+feature1 = st.number_input("Fixed Acidity(g/L)", *r["Fixed Acidity"])
+feature2 = st.number_input("Volatile Acidity(g/L)", *r["Volatile Acidity"])
+feature3 = st.number_input("Citric Acid(g/L)", *r["Citric Acid"])
+feature4 = st.number_input("Residual Sugar(g/L)", *r["Residual Sugar"])
+feature5 = st.number_input("Chlorides(g/L)", *r["Chlorides"])
+feature6 = st.number_input("Free Sulfur Dioxide(ppm)", *r["Free Sulfur Dioxide"])
+feature7 = st.number_input("Total Sulfur Dioxide(ppm)", *r["Total Sulfur Dioxide"])
+feature8 = st.number_input("Density (g/cm³)", *r["Density"])
 feature9 = st.number_input("pH", *r["pH"])
-feature10 = st.number_input("Sulphates", *r["Sulphates"])
-feature11 = st.number_input("Alcohol", *r["Alcohol"])
+feature10 = st.number_input("Sulphates(g/L)", *r["Sulphates"])
+feature11 = st.number_input("Alcohol(%)", *r["Alcohol"])
 
 input_data = pd.DataFrame([{
     'fixed acidity': feature1,
