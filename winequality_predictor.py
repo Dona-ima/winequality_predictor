@@ -48,11 +48,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Load models and scalers ---
-model_red = joblib.load('joblib\winequality-red.joblib')
-scaler_red = joblib.load('joblib\scaler-red.joblib')
+model_red = joblib.load('winequality-red.joblib')
+scaler_red = joblib.load('scaler-red.joblib')
 
-model_white = joblib.load('joblib\winequality-white.joblib')
-scaler_white = joblib.load('joblib\scaler-white.joblib')
+model_white = joblib.load('winequality-white.joblib')
+scaler_white = joblib.load('scaler-white.joblib')
 
 # --- Feature Ranges ---
 feature_ranges = {
