@@ -1,6 +1,6 @@
 import streamlit as st
 import joblib
-import numpy as np
+import pandas as pd
 
 # --- Custom CSS styling ---
 st.markdown("""
@@ -84,7 +84,7 @@ feature_ranges = {
     }
 }
 
-# --- Section sélection du type de vin ---
+# --- Wine Type Selection Section ---
 st.markdown("""
     <h2 style='text-align: center;color: #8B0000; margin-bottom: 10px'>
         🍷 <strong>Wine Quality Prediction</strong>
@@ -100,7 +100,7 @@ st.markdown("""
 
 wine_type = st.selectbox("", ("Red Wine", "White Wine"))
 
-# --- Mise en forme dynamique ---
+# --- Dynamic Form Setup ---
 if wine_type == "Red Wine":
     model = model_red
     scaler = scaler_red
@@ -117,7 +117,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.write("")
 
-# --- Input des caractéristiques ---
+# --- Feature Input ---
 r = feature_ranges[wine_type]
 
 feature1 = st.number_input("Fixed Acidity", *r["Fixed Acidity"])
@@ -132,11 +132,22 @@ feature9 = st.number_input("pH", *r["pH"])
 feature10 = st.number_input("Sulphates", *r["Sulphates"])
 feature11 = st.number_input("Alcohol", *r["Alcohol"])
 
-input_data = np.array([[feature1, feature2, feature3, feature4, feature5, feature6, 
-                        feature7, feature8, feature9, feature10, feature11]])
+input_data = pd.DataFrame([{
+    'fixed acidity': feature1,
+    'volatile acidity': feature2,
+    'citric acid': feature3,
+    'residual sugar': feature4,
+    'chlorides': feature5,
+    'free sulfur dioxide': feature6,
+    'total sulfur dioxide': feature7,
+    'density': feature8,
+    'pH': feature9,
+    'sulphates': feature10,
+    'alcohol': feature11
+}])
 input_data = scaler.transform(input_data)
 
-# --- Prédiction ---
+# --- Prediction ---
 if st.button('Predict'):
     prediction = model.predict(input_data)
     proba = model.predict_proba(input_data)
@@ -157,7 +168,7 @@ if st.button('Predict'):
     st.write(f"High Quality (2): {proba[0][2]*100:.2f}%")
 
 # --- Sidebar ---
-# --- Sidebar dynamique ---
+
 st.sidebar.header("Model Details")
 
 if wine_type == "Red Wine":
